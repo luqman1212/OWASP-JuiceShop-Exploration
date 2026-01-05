@@ -9,21 +9,21 @@ Proyek ini berisi dokumentasi setup dan vulnerability pada aplikasinya
 1. Jika kalian belum memiliki app nya, download terlebih dahulu di https://www.docker.com/products/docker-desktop/
 2. Setelah selesai, buka docker dan cek di bagian pojok bawah kanan bagian Show Hidden Icons. Pastikan ada tulisan **Docker Desktop Running** sudah muncul. Jika sudah muncul, close saja app dockernya.
 
-![Docker Running](docker-desktop-running.png)
+![Docker Running](assets/docker-desktop-running.png)
 ##
 
 3. Buat folder kosong di File Manager laptop, terserah di penyimpanan manapun. Kalau aku beri nama **cyber-lab-juice-shop**.
 
-![Folder Kosong](folder-kosong.png)
+![Folder Kosong](assets/folder-kosong.png)
 ##
 
 4. Cari search windows, lalu ketik CMD/PowerShell. Kalau aku pribadi pilih PowerShell dan pencet **Run as Administrator**.
 5. Setelah terminal terbuka, kalian ketik sesuai gambar di bawah ini:
-![Notepad](perintah-buat-notepad.png)
+![Notepad](assets/perintah-buat-notepad.png)
 
 **INGAT**: Perintah 'cd' artinya berpindah folder. Jika kalian berada di penyimpanan yang berbeda, kalian bisa menyesuaikan nama penyimpanannya. Kalau di kasusku, aku membuat folder kosong di Volume E. Jadi aku memberikan perintah sesuai gambar diatas. Untuk nama pathnya, bisa dilihat contoh di bawah ini:
 ##
-![Path](path-file.png)
+![Path](assets/path-file.png)
 ##
 
 6. Kembali ke perintah Notepad, setelah kalian enter, akan muncul perintah create file dengan pilihan yes or no. Kalian klik yes dan notepad sudah muncul. Kalian isi dengan tulisan ini:
@@ -62,12 +62,12 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 
 ## EVIDENCE
 #### *1. ADMIN LOGIN*
-![Admin Login Payload](sqli-payload-login.png)
+![Admin Login Payload](assets/sqli-payload-login.png)
 ##
 
 #### *2. ADMIN BYPASS*
-![Admin Bypass Success](sqli-admin-bypass-success.png)
+![Admin Bypass Success](assets/sqli-admin-bypass-success.png)
 ##
 
 #### *3. XSS ALERT*
-![XSS Alert](xss-alert.png)
+![XSS Alert](assets/xss-alert.png)
