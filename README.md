@@ -5,7 +5,7 @@ Proyek ini berisi dokumentasi setup dan vulnerability pada aplikasinya
 - Docker Engine / Docker Desktop
 - Docker Compose
 
-## Setup
+## Docker Dowwnload Setup & How To Running OWASP Juice Shop
 1. Jika kalian belum memiliki app nya, download terlebih dahulu di https://www.docker.com/products/docker-desktop/
 2. Setelah selesai, buka docker dan cek di bagian pojok bawah kanan bagian Show Hidden Icons. Pastikan ada tulisan **Docker Desktop Running** sudah muncul. Jika sudah muncul, close saja app dockernya.
 
