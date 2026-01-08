@@ -49,45 +49,47 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 ##
 
 ### TEMUAN VULNERABILITY
-#### **A. SQL Injection (Authentication Bypass)**
+#### **1. SQL Injection (Authentication Bypass)**
 * **Vulnerability:** SQL Injection pada form login.
 * **Payload:** `' or 1=1 --`
 * **Hasil:** Berhasil masuk ke akun administrator tanpa mengetahui kata sandi yang asli.
 
-#### **B. Cross-Site Scripting (Reflected XSS)**
+#### **2. Cross-Site Scripting (Reflected XSS)**
 * **Vulnerability:** Kurangnya sanitasi input pada fitur pencarian (search bar)
 * **Payload:** `<img src=x onerror=alert('Hacked')>`
 * **Hasil:** Script berhasil dieksekusi oleh browser dan memunculkan jendela alert 'Hacked'
 
-#### **C. Sensitive Data Exposure (Broken Anti-Dos & FTP Access)**
+#### **3. Sensitive Data Exposure (Broken Anti-Dos & FTP Access)**
 * **Vulnerability:** Eksposur direktori `/ftp` dan filter file yang lemah.
 * **Payload:** Menggunakan teknik *Poison Null Byte* / *Double Encoding* (`%2500.pdf`) untuk mengunduh file cadangan `.bak`.
 * **Hasil:** Berhasil mengunduh file `coupons_2013.md.bak` dan dibuka memakai Notepad. File tersebut berisi daftar kode kupon diskon yang seharusnya bersifat rahasia.
 
-#### **D. Broken Access Control**
+#### **4. (A). Broken Access Control**
 * **Vulnerability:** Halaman `/administration` dapat diakses tanpa autentikasi admin yang sah dan dapat dimanipulasi dengan token/session.
 * **Payload:** `http/localhost:3000/#/administration`
 * **Hasil:** User biasa berhasil mengakses halaman admin.
+#### **(B). Sensitive Data Exposure**
+* **Vulnerability:** Halaman ini menampilkan email user internal (`admin@juice@sh-op, ciso@juice.sh-op`) dan email developer asi (`bjoern.kimminch@gmail.com`)
+* **Payload:** Tidak ada payload khusus( (Passive Exposure).
+* **Hasil:** Isi data sensitif terekspos / Crypthographic Failures.
 
 ## EVIDENCE
 #### *1. ADMIN LOGIN*
 ![Admin Login Payload](assets/sqli-payload-login.png)
-##
-
-#### *2. ADMIN BYPASS*
 ![Admin Bypass Success](assets/sqli-admin-bypass-success.png)
 ##
 
-#### *3. XSS ALERT*
+#### *2. XSS ALERT*
 ![XSS Alert](assets/xss-alert.png)
 ##
 
-#### *4. LEAKED COUPONS*
+#### *3. LEAKED COUPONS*
 ![Leaked Coupons Data](assets/poisonnullbyte-doubleencoding.png)
 ![Leaked Coupons Data](assets/coupons-download.png)
 ![Leaked Coupons Data](assets/coupons-leaked.png)
 ##
 
-#### *5. BROKEN ACCESS CONTROL*
-![Access](assets/broken-admin.png)
+#### *4. BROKEN ACCESS CONTROL*
+![Broken Access](assets/broken-admin.png)
+![Sensitive Data](
 ##
