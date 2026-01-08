@@ -61,8 +61,13 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 
 #### **C. Sensitive Data Exposure (Broken Anti-Dos & FTP Access)**
 * **Vulnerability:** Eksposur direktori `/ftp` dan filter file yang lemah.
-* **Payload/Teknik:** Menggunakan teknik *Poison Null Byte* / *Double Encoding* (`%2500.pdf`) untuk mengunduh file cadangan `.bak`.
+* **Payload:** Menggunakan teknik *Poison Null Byte* / *Double Encoding* (`%2500.pdf`) untuk mengunduh file cadangan `.bak`.
 * **Hasil:** Berhasil mengunduh file `coupons_2013.md.bak` dan dibuka memakai Notepad. File tersebut berisi daftar kode kupon diskon yang seharusnya bersifat rahasia.
+
+#### **D. Broken Access Control**
+* **Vulnerability:** Halaman `/administration` dapat diakses tanpa autentikasi admin yang sah dan dapat dimanipulasi dengan token/session.
+* **Payload:** `http/localhost:3000/#/administration`
+* **Hasil:** User biasa berhasil mengakses halaman admin.
 
 ## EVIDENCE
 #### *1. ADMIN LOGIN*
@@ -81,4 +86,8 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 ![Leaked Coupons Data](assets/poisonnullbyte-doubleencoding.png)
 ![Leaked Coupons Data](assets/coupons-download.png)
 ![Leaked Coupons Data](assets/coupons-leaked.png)
+##
+
+#### *5. BROKEN ACCESS CONTROL*
+![Access](assets/broken-admin.png)
 ##
