@@ -68,6 +68,7 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 * **Vulnerability:** Halaman `/administration` dapat diakses tanpa autentikasi admin yang sah dan dapat dimanipulasi dengan token/session.
 * **Payload:** `http/localhost:3000/#/administration`
 * **Hasil:** User biasa berhasil mengakses halaman admin.
+* **Mitigation:** Selalu anggap FrontEnd dapat dimanipulasi.
 #### **(B). Sensitive Data Exposure**
 * **Vulnerability:** Halaman ini menampilkan email user internal (`admin@juice@sh-op, ciso@juice.sh-op`) dan email developer asi (`bjoern.kimminch@gmail.com`)
 * **Payload:** Tidak ada payload khusus( (Passive Exposure).
