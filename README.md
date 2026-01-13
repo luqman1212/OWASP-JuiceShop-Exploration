@@ -64,7 +64,7 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 * **Payload:** Menggunakan teknik *Poison Null Byte* / *Double Encoding* (`%2500.pdf`) untuk mengunduh file cadangan `.bak`.
 * **Hasil:** Berhasil mengunduh file `coupons_2013.md.bak` dan dibuka memakai Notepad. File tersebut berisi daftar kode kupon diskon yang seharusnya bersifat rahasia.
 
-#### **4. (A). Broken Access Control**
+#### **4. (A). Broken Access Control - Administration (Login)**
 * **Vulnerability:** Halaman `/administration` dapat diakses tanpa autentikasi admin yang sah dan dapat dimanipulasi dengan token/session.
 * **Payload:** `http/localhost:3000/#/administration`
 * **Hasil:** User biasa berhasil mengakses halaman admin.
@@ -73,6 +73,12 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 * **Vulnerability:** Halaman ini menampilkan email user internal (`admin@juice@sh-op, ciso@juice.sh-op`) dan email developer asi (`bjoern.kimminch@gmail.com`)
 * **Payload:** Tidak ada payload khusus( (Passive Exposure).
 * **Hasil:** Isi data sensitif terekspos / Crypthographic Failures.
+
+#### **5. Broken Access Control - Direct URL Access to Score Board**
+* **Vulnerability:** Halaman `/score-board` dapat diakses tanpa login/ sudah login.
+* **Payload:** Direct URL Access (/#/score-board) / Forced Browsing.
+* **Hasil:** Berhasil mengakses hasil halaman score-board.
+
 
 ## EVIDENCE
 #### *1. ADMIN LOGIN*
@@ -92,4 +98,8 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 
 #### *4. BROKEN ACCESS CONTROL | SENSITIVE DATA EXPOSURE*
 ![Broken Access](assets/broken-admin.png)
+##
+
+#### *5. BROKEN ACCESS CONTROL | MISSING AUTHORIZATION CONTROL*
+![Broken Access](assets/score-board.png)
 ##
