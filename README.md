@@ -51,12 +51,12 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 ### TEMUAN VULNERABILITY
 #### **1. SQL Injection (Authentication Bypass)**
 * **Vulnerability:** SQL Injection pada form login.
-* **Payload:** `' or 1=1 --`
+* **Payload:** Ketik `' or 1=1 --` pada bagian user.
 * **Hasil:** Berhasil masuk ke akun administrator tanpa mengetahui kata sandi yang asli.
 
 #### **2. Cross-Site Scripting (Reflected XSS)**
 * **Vulnerability:** Kurangnya sanitasi input pada fitur pencarian (search bar)
-* **Payload:** `<img src=x onerror=alert('Hacked')>`
+* **Payload:** Ketik `<img src=x onerror=alert('Hacked')>` di bar pencarian.
 * **Hasil:** Script berhasil dieksekusi oleh browser dan memunculkan jendela alert 'Hacked'
 
 #### **3. Sensitive Data Exposure (Broken Anti-Dos & FTP Access)**
