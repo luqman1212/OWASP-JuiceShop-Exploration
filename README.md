@@ -1,7 +1,7 @@
-# OWASP Juice Shop - Security Exploration Lab
+<img width="1919" height="1154" alt="image" src="https://github.com/user-attachments/assets/876d9e53-68a6-4dae-bc6f-1c1dff23674c" /># OWASP Juice Shop - Security Exploration Lab
 Proyek ini berisi dokumentasi setup dan vulnerability pada aplikasinya
 
-## Prerequisites
+## APP SETUP
 - Docker Engine / Docker Desktop
 - Docker Compose
 
@@ -70,7 +70,7 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 * **Hasil:** User biasa berhasil mengakses halaman admin.
 * **Mitigation:** Selalu anggap FrontEnd dapat dimanipulasi.
 #### **(B). Sensitive Data Exposure**
-* **Vulnerability:** Halaman ini menampilkan email user internal (`admin@juice@sh-op, ciso@juice.sh-op`) dan email developer asi (`bjoern.kimminch@gmail.com`)
+* **Vulnerability:** Halaman ini menampilkan email user internal (`admin@juice@sh-op, ciso@juice.sh-op`) dan email developer asli (`bjoern.kimminch@gmail.com`)
 * **Payload:** Tidak ada payload khusus( (Passive Exposure).
 * **Hasil:** Isi data sensitif terekspos / Crypthographic Failures.
 
@@ -79,6 +79,11 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 * **Payload:** Direct URL Access (/#/score-board) / Forced Browsing.
 * **Hasil:** Berhasil mengakses hasil halaman score-board.
 
+#### **6. Broken Access Control - Administration (JWT)**
+* **Vulnerability:** Endpoint `api/users` dapat diakses menggunakan JWT dengan role admin. Jika token admin bocor atau dimanipulasi, pengguna non-admin dapat mengakses data sensitif.
+* **Payload:** Ketik di terminal `curl -H "Authorization: Bearer <JWT_TOKEN>" http://localhost:3000/api/users`
+* **Hasil:** Server merespon **200 OK** dan mengembalikan seluruh data user.
+* **Mitigation:** Hak akses dan validasi role harus dilakukan oleh back-end dan JWT harus dilindungu dengan secret yang kuat dan expiration time yang tepat.
 
 ## EVIDENCE
 #### *1. ADMIN LOGIN*
@@ -102,4 +107,8 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 
 #### *5. BROKEN ACCESS CONTROL | MISSING AUTHORIZATION CONTROL*
 ![Broken Access](assets/score-board.png)
+##
+
+#### *6. BROKEN ACCESS CONTROL | JWT TOKEN*
+![Broken Access](assets/jwt-token.png)
 ##
