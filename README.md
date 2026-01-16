@@ -1,4 +1,4 @@
-<img width="1919" height="1154" alt="image" src="https://github.com/user-attachments/assets/876d9e53-68a6-4dae-bc6f-1c1dff23674c" /># OWASP Juice Shop - Security Exploration Lab
+# OWASP Juice Shop - Security Exploration Lab
 Proyek ini berisi dokumentasi setup dan vulnerability pada aplikasinya
 
 ## APP SETUP
