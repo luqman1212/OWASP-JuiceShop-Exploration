@@ -48,7 +48,11 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 ##
 ##
 
-### TEMUAN VULNERABILITY
+# TEMUAN VULNERABILITY
+
+##
+### A03 OWASP
+
 #### **1. SQL Injection (Authentication Bypass)**
 * **Vulnerability:** SQL Injection pada form login.
 * **Payload:** Ketik `' or 1=1 --` pada bagian user.
@@ -59,10 +63,16 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 * **Payload:** Ketik `<img src=x onerror=alert('Hacked')>` di bar pencarian.
 * **Hasil:** Script berhasil dieksekusi oleh browser dan memunculkan jendela alert 'Hacked'
 
+##
+### A02 OWASP
+
 #### **3. Sensitive Data Exposure (Broken Anti-Dos & FTP Access)**
 * **Vulnerability:** Eksposur direktori `/ftp` dan filter file yang lemah.
 * **Payload:** Menggunakan teknik *Poison Null Byte* / *Double Encoding* (`%2500.pdf`) untuk mengunduh file cadangan `.bak`.
 * **Hasil:** Berhasil mengunduh file `coupons_2013.md.bak` dan dibuka memakai Notepad. File tersebut berisi daftar kode kupon diskon yang seharusnya bersifat rahasia.
+
+##
+### A01 OWASP
 
 #### **4. (A). Broken Access Control - Administration (Login)**
 * **Vulnerability:** Halaman `/administration` dapat diakses tanpa autentikasi admin yang sah dan dapat dimanipulasi dengan token/session.
