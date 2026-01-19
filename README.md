@@ -1,7 +1,7 @@
 # OWASP Juice Shop - Security Exploration Lab
 Proyek ini berisi dokumentasi setup dan vulnerability pada aplikasinya
 
-## APP SETUP
+## 🧰 APP SETUP
 - Docker Engine / Docker Desktop
 - Docker Compose
 
@@ -50,29 +50,25 @@ Setelah di enter, akan muncul command **running**, itu menandakan bahwa web **Ju
 
 # TEMUAN VULNERABILITY
 
-##
-### A03 OWASP
-
-#### **1. SQL Injection (Authentication Bypass)**
+#### **1. SQL Injection - Authentication Bypass**
+* **OWASP TOP 10:** A01 - Broken Access Control
 * **Vulnerability:** SQL Injection pada form login.
 * **Payload:** Ketik `' or 1=1 --` pada bagian user.
 * **Hasil:** Berhasil masuk ke akun administrator tanpa mengetahui kata sandi yang asli.
+* **Mitigation:** Menggunakan preparedf statements untuk mencegah input pengguna dieksekusi sebagai perintah SQL. Hindari string concatenation pada query dam lakukan validasi input sebagai lapisan tambahan lalu simpan password dalam bentuk hash.
 
-#### **2. Cross-Site Scripting (Reflected XSS)**
+#### **2. Cross-Site Scripting - Reflected XSS**
+* **OWASP TOP 10:** A03 - Injection
 * **Vulnerability:** Kurangnya sanitasi input pada fitur pencarian (search bar)
 * **Payload:** Ketik `<img src=x onerror=alert('Hacked')>` di bar pencarian.
 * **Hasil:** Script berhasil dieksekusi oleh browser dan memunculkan jendela alert 'Hacked'
-
-##
-### A02 OWASP
+* **Mitigation:** 
 
 #### **3. Sensitive Data Exposure (Broken Anti-Dos & FTP Access)**
+* **OWASP TOP 10:** A02 - Cryptograhpic Failurers
 * **Vulnerability:** Eksposur direktori `/ftp` dan filter file yang lemah.
 * **Payload:** Menggunakan teknik *Poison Null Byte* / *Double Encoding* (`%2500.pdf`) untuk mengunduh file cadangan `.bak`.
 * **Hasil:** Berhasil mengunduh file `coupons_2013.md.bak` dan dibuka memakai Notepad. File tersebut berisi daftar kode kupon diskon yang seharusnya bersifat rahasia.
-
-##
-### A01 OWASP
 
 #### **4. (A). Broken Access Control - Administration (Login)**
 * **Vulnerability:** Halaman `/administration` dapat diakses tanpa autentikasi admin yang sah dan dapat dimanipulasi dengan token/session.
